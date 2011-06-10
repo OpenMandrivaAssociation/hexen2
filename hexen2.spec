@@ -59,13 +59,12 @@ Source1:	http://download.sourceforge.net/uhexen2/hexen2source-gamecode-%{version
 Source2:	http://download.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 BuildRequires:	SDL-devel >= 1.2.4
-%{!?_without_mp3:BuildRequires:  %{!?_with_mpg123:libmad-devel}%{?_with_mpg123:libmpg123-devel >= 1.12.0}}
-%{!?_without_ogg:BuildRequires:  libogg-devel libvorbis-devel}
-%{!?_without_asm:BuildRequires:  nasm >= 0.98.38}
-%{!?_without_freedesktop:BuildRequires: desktop-file-utils}
-%{?_without_gtk2:BuildRequires:  gtk+-devel}
-%{!?_without_gtk2:BuildRequires: gtk2-devel}
-Obsoletes:	hexen2-missionpack
+BuildRequires:	libmad-devel libmpg123-devel >= 1.12.0
+BuildRequires:	libogg-devel libvorbis-devel
+BuildRequires:	nasm >= 0.98.38
+BuildRequires:	desktop-file-utils
+BuildRequires:	gtk+-devel
+BuildRequires:	gtk2-devel
 Requires:	SDL >= 1.2.4
 # timidity++-patches requirement is non-fatal
 #%{!?_without_timidity:Requires: timidity++-patches}
