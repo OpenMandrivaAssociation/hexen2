@@ -1,5 +1,5 @@
 
-%ifnarch %ix86
+%ifnarch %x86
 %define asm_buildopt USE_X86_ASM=yes
 %endif
 
