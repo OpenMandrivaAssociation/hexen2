@@ -82,7 +82,7 @@ launcher application which provides a GTK gui for launching different
 versions of the game.
 
 %package -n hexenworld
-Group:		Amusements/Games
+Group:		Games/Arcade
 Summary:	HexenWorld Client and Server
 Requires:	SDL >= 1.2.4
 # timidity++-patches requirement is non-fatal
