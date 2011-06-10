@@ -42,7 +42,7 @@
 %define prerelease	rc3
 
 # package release number for final-release:
-%define pkg_final	%mkrel 0.1
+%define pkg_final	1
 # package release number for pre-release:
 %define pkg_prerel	3
 
@@ -50,7 +50,7 @@ Name:		hexen2
 License:	GPLv2
 Group:		Games/Arcade
 Version:	1.5.0
-Release:	%{?prerelease:0.%{pkg_prerel}.%{prerelease}}%{!?prerelease:%{pkg_final}}
+Release:	%mkrel 0.1.rc3
 Summary:	Hexen II: Hammer of Thyrion
 URL:		http://uhexen2.sourceforge.net/
 Source:		http://download.sourceforge.net/uhexen2/hexen2source-%{version}%{?prerelease:-%{prerelease}}.tgz
