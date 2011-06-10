@@ -1,7 +1,12 @@
 
-%ifnarch %{ix86}
-%define _without_asm 1
+%ifnarch %ix86
+%define asm_buildopt USE_X86_ASM=yes
 %endif
+
+%ifarch x86_64
+%define asm_buildopt USE_X86_ASM=no
+%endif
+
 
 %{?el2:%define _without_freedesktop 1}
 %{?rh7:%define _without_freedesktop 1}
@@ -11,7 +16,6 @@
 
 # default build options
 %define gtk1_buildopt GTK2=yes
-%define asm_buildopt USE_X86_ASM=yes
 %define alsa_buildopt USE_ALSA=yes
 %define midi_buildopt USE_MIDI=yes
 %define timidity_buildopt USE_CODEC_TIMIDITY=yes
