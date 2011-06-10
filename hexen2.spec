@@ -10,15 +10,15 @@
 %{?rh7:%define _without_gtk2 1}
 
 # default build options
-%{!?_without_gtk2:%define gtk1_buildopt GTK2=yes}
-%{!?_without_asm:%define asm_buildopt USE_X86_ASM=yes}
-%{!?_without_alsa:%define alsa_buildopt USE_ALSA=yes}
-%{!?_without_midi:%define midi_buildopt USE_MIDI=yes}
-%{!?_without_timidity:%define timidity_buildopt USE_CODEC_TIMIDITY=yes}
-%{!?_without_wavmusic:%define wavmusic_buildopt USE_CODEC_WAVE=yes}
-%{!?_with_mpg123:%define mp3_libraryopt MP3LIB=mad}
-%{!?_without_mp3:%define mp3_buildopt USE_CODEC_MP3=yes}
-%{!?_without_ogg:%define ogg_buildopt USE_CODEC_VORBIS=yes}
+%define gtk1_buildopt GTK2=yes
+%define asm_buildopt USE_X86_ASM=yes
+%define alsa_buildopt USE_ALSA=yes
+%define midi_buildopt USE_MIDI=yes
+%define timidity_buildopt USE_CODEC_TIMIDITY=yes
+%define wavmusic_buildopt USE_CODEC_WAVE=yes
+%define mp3_libraryopt MP3LIB=mad
+%define mp3_buildopt USE_CODEC_MP3=yes
+%define ogg_buildopt USE_CODEC_VORBIS=yes
 # build option overrides
 %{?_without_gtk2:%define gtk1_buildopt GTK1=yes}
 %{?_without_asm:%define asm_buildopt USE_X86_ASM=no}
