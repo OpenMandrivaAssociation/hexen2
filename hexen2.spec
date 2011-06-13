@@ -54,7 +54,7 @@ Name:		hexen2
 License:	GPLv2
 Group:		Games/Arcade
 Version:	1.5.0
-Release:	%mkrel 0.2.rc3
+Release:	%mkrel 0.3.rc3
 Summary:	Hexen II: Hammer of Thyrion
 URL:		http://uhexen2.sourceforge.net/
 Source:		http://download.sourceforge.net/uhexen2/hexen2source-%{version}%{?prerelease:-%{prerelease}}.tgz
@@ -107,9 +107,9 @@ run a HexenWorld server or client, and a master server application.
 
 %build
 # Build the main game binaries
-%{__make} -C engine/hexen2 %{engine_buildopt} h2
+%{__make} -C engine/hexen2 %{engine_buildopt} DEBUG=yes h2
 %{__make} -s -C engine/hexen2 clean
-%{__make} -C engine/hexen2 %{engine_buildopt} glh2
+%{__make} -C engine/hexen2 %{engine_buildopt} DEBUG=yes glh2
 %{__make} -s -C engine/hexen2 clean
 # Build the dedicated server
 %{__make} -C engine/hexen2 -f Makefile.sv
