@@ -43,7 +43,7 @@
 
 # pre-release version: MAKE SURE to change this
 # to an %undefine for the final realease!!
-# %define prerelease	rc4
+# define prerelease	rc4
 
 # package release number for final-release:
 %define pkg_final	1
