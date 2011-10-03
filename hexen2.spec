@@ -43,7 +43,7 @@
 
 # pre-release version: MAKE SURE to change this
 # to an %undefine for the final realease!!
-%define prerelease	rc4
+# %define prerelease	rc4
 
 # package release number for final-release:
 %define pkg_final	1
@@ -54,12 +54,11 @@ Name:		hexen2
 License:	GPLv2
 Group:		Games/Arcade
 Version:	1.5.0
-Release:	%mkrel 0.4.rc4
+Release:	%mkrel 0.1
 Summary:	Hexen II: Hammer of Thyrion
 URL:		http://uhexen2.sourceforge.net/
-Source:		http://download.sourceforge.net/uhexen2/hexen2source-%{version}%{?prerelease:-%{prerelease}}.tgz
-#Source1:	http://download.sourceforge.net/uhexen2/gamedata-src-%{gamecode_ver}.tgz
-Source1:	http://download.sourceforge.net/uhexen2/hexen2source-gamecode-%{version}%{?prerelease:-%{prerelease}}.tgz
+Source:		http://download.sourceforge.net/uhexen2/hexen2source-%{version}.tgz
+Source1:	http://download.sourceforge.net/uhexen2/hexen2source-gamecode-%{version}.tgz
 Source2:	http://download.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 BuildRequires:	SDL-devel >= 1.2.4
@@ -103,7 +102,7 @@ internet play. This package contains the files which are required to
 run a HexenWorld server or client, and a master server application.
 
 %prep
-%setup -q -n hexen2source-%{version}%{?prerelease:-%{prerelease}} -a1 -a2
+%setup -q -n hexen2source-%{version} -a1 -a2
 
 %build
 # Build the main game binaries
@@ -178,7 +177,7 @@ utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/hw -oi -on
 %{__install} -D -m644 docs/ReleaseNotes-1.4.1 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.1
 %{__install} -D -m644 docs/ReleaseNotes-1.4.2 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.2
 %{__install} -D -m644 docs/ReleaseNotes-1.4.3 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.3
-%{__install} -D -m644 docs/ReleaseNotes-1.4.4 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.4
+# %{__install} -D -m644 docs/ReleaseNotes-1.4.4 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.4
 
 # Install the gamedata
 %{__mkdir_p} %{buildroot}/%{_gamesdatadir}/%{name}/data1/
@@ -317,7 +316,7 @@ desktop-file-install \
 %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.1
 %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.2
 %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.3
-%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.4
+# %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.4
 %{!?_without_freedesktop:%{_datadir}/applications/%{desktop_vendor}-%{name}.desktop}
 %{?_without_freedesktop:%{_sysconfdir}/X11/applnk/Games/%{name}.desktop}
 
