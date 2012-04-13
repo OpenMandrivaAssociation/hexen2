@@ -39,7 +39,7 @@
 
 %define desktop_vendor	uhexen2
 
-%define gamecode_ver	1.20
+%define gamecode_ver	1.5.3
 
 # pre-release version: MAKE SURE to change this
 # to an %undefine for the final realease!!
