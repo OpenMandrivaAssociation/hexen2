@@ -129,10 +129,10 @@ run a HexenWorld server or client, and a master server application.
 # Build the hcode compiler
 %{__make} -C utils/hcc
 # Build the game-code
-utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/h2
-utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/h2 -name progs2.src
-utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/portals -oi -on
-utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/hw -oi -on
+# utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/h2
+# utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/h2 -name progs2.src
+# utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/portals -oi -on
+# utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/hw -oi -on
 #utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 
 # Done building
