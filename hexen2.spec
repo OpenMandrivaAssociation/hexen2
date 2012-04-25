@@ -39,7 +39,7 @@
 
 %define desktop_vendor	uhexen2
 
-%define gamecode_ver	1.5.3
+%define gamecode_ver	1.25
 
 # pre-release version: MAKE SURE to change this
 # to an %undefine for the final realease!!
@@ -129,11 +129,11 @@ run a HexenWorld server or client, and a master server application.
 # Build the hcode compiler
 %{__make} -C utils/hcc
 # Build the game-code
-# utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/h2
-# utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/h2 -name progs2.src
-# utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/portals -oi -on
-# utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/hw -oi -on
-#utils/bin/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
+utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/h2
+utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/h2 -name progs2.src
+utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/portals -oi -on
+utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/hw -oi -on
+utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 
 # Done building
 
