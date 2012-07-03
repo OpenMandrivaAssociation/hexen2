@@ -161,6 +161,7 @@ utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 %{__install} -D -m644 docs/ABOUT %{buildroot}/%{_gamesdatadir}/%{name}/docs/ABOUT
 %{__install} -D -m644 docs/Features %{buildroot}/%{_gamesdatadir}/%{name}/docs/Features
 %{__install} -D -m644 docs/CHANGES %{buildroot}/%{_gamesdatadir}/%{name}/docs/CHANGES
+%{__install} -D -m644 docs/CHANGES %{buildroot}/%{_gamesdatadir}/%{name}/docs/CHANGES.old
 %{__install} -D -m644 docs/README.music %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.music
 %{__install} -D -m644 docs/README.3dfx %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.3dfx
 %{__install} -D -m644 docs/README.launcher %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.launcher
@@ -303,6 +304,7 @@ desktop-file-install \
 %{_gamesdatadir}/%{name}/docs/ABOUT
 %{_gamesdatadir}/%{name}/docs/Features
 %{_gamesdatadir}/%{name}/docs/CHANGES
+%{_gamesdatadir}/%{name}/docs/CHANGES.old
 %{_gamesdatadir}/%{name}/docs/README.music
 %{_gamesdatadir}/%{name}/docs/README.launcher
 %{_gamesdatadir}/%{name}/docs/README.3dfx
