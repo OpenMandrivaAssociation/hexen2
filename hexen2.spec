@@ -168,15 +168,15 @@ utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 %{__install} -D -m644 docs/README.hwsv %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.hwsv
 %{__install} -D -m644 docs/README.hwmaster %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.hwmaster
 %{__install} -D -m644 docs/SrcNotes.txt %{buildroot}/%{_gamesdatadir}/%{name}/docs/SrcNotes.txt
-%{__install} -D -m644 docs/ReleaseNotes-%{version} %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-%{version}
+%{__install} -D -m644 docs/ReleaseNotes-%{version} %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes
 # install release notes for the older versions
-%{__install} -D -m644 docs/ReleaseNotes-1.2.3 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.3
-%{__install} -D -m644 docs/ReleaseNotes-1.2.4a %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.4a
-%{__install} -D -m644 docs/ReleaseNotes-1.3.0 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.3.0
-%{__install} -D -m644 docs/ReleaseNotes-1.4.0 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.0
-%{__install} -D -m644 docs/ReleaseNotes-1.4.1 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.1
-%{__install} -D -m644 docs/ReleaseNotes-1.4.2 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.2
-%{__install} -D -m644 docs/ReleaseNotes-1.4.3 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.3
+%{__install} -D -m644 docs/ReleaseNotes-1.2.3 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes.old
+# %{__install} -D -m644 docs/ReleaseNotes-1.2.4a %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.4a
+# %{__install} -D -m644 docs/ReleaseNotes-1.3.0 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.3.0
+# %{__install} -D -m644 docs/ReleaseNotes-1.4.0 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.0
+# %{__install} -D -m644 docs/ReleaseNotes-1.4.1 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.1
+# %{__install} -D -m644 docs/ReleaseNotes-1.4.2 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.2
+# %{__install} -D -m644 docs/ReleaseNotes-1.4.3 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.3
 # %{__install} -D -m644 docs/ReleaseNotes-1.4.4 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.4
 
 # Install the gamedata
@@ -308,14 +308,14 @@ desktop-file-install \
 %{_gamesdatadir}/%{name}/docs/README.3dfx
 %{_gamesdatadir}/%{name}/docs/TODO
 %{_gamesdatadir}/%{name}/docs/SrcNotes.txt
-# %{_gamesdatadir}/%{name}/docs/ReleaseNotes-%{version}
-%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.3
-%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.4a
-%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.3.0
-%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.0
-%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.1
-%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.2
-%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.3
+%{_gamesdatadir}/%{name}/docs/ReleaseNotes
+%{_gamesdatadir}/%{name}/docs/ReleaseNotes.old
+# %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.4a
+# %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.3.0
+# %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.0
+# %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.1
+# %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.2
+# %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.3
 # %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.4
 %{!?_without_freedesktop:%{_datadir}/applications/%{desktop_vendor}-%{name}.desktop}
 %{?_without_freedesktop:%{_sysconfdir}/X11/applnk/Games/%{name}.desktop}
