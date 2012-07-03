@@ -171,7 +171,7 @@ utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 %{__install} -D -m644 docs/SrcNotes.txt %{buildroot}/%{_gamesdatadir}/%{name}/docs/SrcNotes.txt
 %{__install} -D -m644 docs/ReleaseNotes %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes
 # install release notes for the older versions
-%{__install} -D -m644 docs/ReleaseNotes-1.2.3 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes.old
+%{__install} -D -m644 docs/ReleaseNotes.old %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes.old
 # %{__install} -D -m644 docs/ReleaseNotes-1.2.4a %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.4a
 # %{__install} -D -m644 docs/ReleaseNotes-1.3.0 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.3.0
 # %{__install} -D -m644 docs/ReleaseNotes-1.4.0 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.0
