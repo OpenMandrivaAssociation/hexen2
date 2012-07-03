@@ -53,7 +53,7 @@
 Name:		hexen2
 License:	GPLv2
 Group:		Games/Arcade
-Version:	1.5.3
+Version:	1.5.4
 Release:	%mkrel 1
 Summary:	Hexen II: Hammer of Thyrion
 URL:		http://uhexen2.sourceforge.net/
