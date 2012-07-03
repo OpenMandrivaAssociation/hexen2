@@ -308,7 +308,7 @@ desktop-file-install \
 %{_gamesdatadir}/%{name}/docs/README.3dfx
 %{_gamesdatadir}/%{name}/docs/TODO
 %{_gamesdatadir}/%{name}/docs/SrcNotes.txt
-%{_gamesdatadir}/%{name}/docs/ReleaseNotes-%{version}
+# %{_gamesdatadir}/%{name}/docs/ReleaseNotes-%{version}
 %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.3
 %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.4a
 %{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.3.0
