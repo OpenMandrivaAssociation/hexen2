@@ -62,8 +62,8 @@ Source1:	http://download.sourceforge.net/uhexen2/hexen2source-gamecode-%{version
 Source2:	http://download.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 BuildRequires:	SDL-devel >= 1.2.4
-BuildRequires:	libmad-devel libmpg123-devel >= 1.12.0
-BuildRequires:	libogg-devel libvorbis-devel
+BuildRequires:	pkgconfig(mad) libmpg123-devel >= 1.12.0
+BuildRequires:	pkgconfig(ogg) libvorbis-devel
 BuildRequires:	nasm >= 0.98.38
 BuildRequires:	desktop-file-utils
 BuildRequires:	gtk+-devel
