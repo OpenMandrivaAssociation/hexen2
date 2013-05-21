@@ -66,7 +66,7 @@ BuildRequires:	pkgconfig(ogg) libvorbis-devel
 BuildRequires:	nasm >= 0.98.38
 BuildRequires:	desktop-file-utils
 BuildRequires:	gtk+-devel
-BuildRequires:	gtk2-devel
+BuildRequires:	pkgconfig(gtk+-2.0)
 Requires:	SDL >= 1.2.4
 # timidity++-patches requirement is non-fatal
 #%{!?_without_timidity:Requires: timidity++-patches}
