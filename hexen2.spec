@@ -60,7 +60,9 @@ URL:		http://uhexen2.sourceforge.net/
 Source:		http://download.sourceforge.net/uhexen2/hexen2source-%{version}.tgz
 Source1:	http://download.sourceforge.net/uhexen2/hexen2source-gamecode-%{version}.tgz
 Source2:	http://download.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz
-BuildRequires:	SDL-devel >= 1.2.4
+BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:	pkgconfig(mad) libmpg123-devel >= 1.12.0
 BuildRequires:	pkgconfig(ogg) libvorbis-devel
 BuildRequires:	nasm >= 0.98.38
@@ -84,7 +86,6 @@ versions of the game.
 %package -n hexenworld
 Group:		Games/Arcade
 Summary:	HexenWorld Client and Server
-Requires:	SDL >= 1.2.4
 # timidity++-patches requirement is non-fatal
 #%{!?_without_timidity:Requires: timidity++-patches}
 # these will be picked by rpm already
