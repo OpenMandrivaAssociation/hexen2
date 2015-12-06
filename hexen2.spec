@@ -39,7 +39,7 @@
 
 %define desktop_vendor	uhexen2
 
-%define gamecode_ver	1.26
+%define gamecode_ver	1.28
 
 # pre-release version: MAKE SURE to change this
 # to an %undefine for the final realease!!
@@ -53,8 +53,8 @@
 Name:		hexen2
 License:	GPLv2
 Group:		Games/Arcade
-Version:	1.5.4
-Release:	6
+Version:	1.5.6
+Release:	1
 Summary:	Hexen II: Hammer of Thyrion
 URL:		http://uhexen2.sourceforge.net/
 Source:		http://download.sourceforge.net/uhexen2/hexen2source-%{version}.tgz
@@ -63,11 +63,12 @@ Source2:	http://download.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
-BuildRequires:	pkgconfig(mad) libmpg123-devel >= 1.12.0
-BuildRequires:	pkgconfig(ogg) libvorbis-devel
+BuildRequires:	pkgconfig(mad) 
+BuildRequires:	pkgconfig(libmpg123)
+BuildRequires:	pkgconfig(ogg)
+BuildRequires:	libvorbis-devel
 BuildRequires:	nasm >= 0.98.38
 BuildRequires:	desktop-file-utils
-BuildRequires:	gtk+-devel
 BuildRequires:	pkgconfig(gtk+-2.0)
 # timidity++-patches requirement is non-fatal
 #%{!?_without_timidity:Requires: timidity++-patches}
@@ -110,7 +111,7 @@ run a HexenWorld server or client, and a master server application.
 %{__make} -C engine/hexen2 %{engine_buildopt} DEBUG=yes glh2
 %{__make} -s -C engine/hexen2 clean
 # Build the dedicated server
-%{__make} -C engine/hexen2 -f Makefile.sv
+%{__make} -C engine/hexen2/server
 # HexenWorld binaries
 %{__make} -C engine/hexenworld/server
 %{__make} -C engine/hexenworld/client %{engine_buildopt} hw
@@ -139,7 +140,7 @@ utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 %install
 %{__rm} -rf %{buildroot}
 %{__mkdir_p} %{buildroot}/%{_gamesdatadir}/%{name}/docs
-%{__install} -D -m755 engine/hexen2/h2ded %{buildroot}/%{_gamesdatadir}/%{name}/h2ded
+%{__install} -D -m755 engine/hexen2/server/h2ded %{buildroot}/%{_gamesdatadir}/%{name}/h2ded
 %{__install} -D -m755 engine/hexen2/glhexen2 %{buildroot}/%{_gamesdatadir}/%{name}/glhexen2
 %{__install} -D -m755 engine/hexen2/hexen2 %{buildroot}/%{_gamesdatadir}/%{name}/hexen2
 %{__install} -D -m755 engine/hexenworld/client/hwcl %{buildroot}/%{_gamesdatadir}/%{name}/hwcl
@@ -183,21 +184,21 @@ utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 %{__mkdir_p} %{buildroot}/%{_gamesdatadir}/%{name}/data1/
 %{__install} -D -m644 gamecode-%{gamecode_ver}/hc/h2/progs.dat %{buildroot}/%{_gamesdatadir}/%{name}/data1/progs.dat
 %{__install} -D -m644 gamecode-%{gamecode_ver}/hc/h2/progs2.dat %{buildroot}/%{_gamesdatadir}/%{name}/data1/progs2.dat
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/h2/hexen.rc %{buildroot}/%{_gamesdatadir}/%{name}/data1/hexen.rc
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/h2/strings.txt %{buildroot}/%{_gamesdatadir}/%{name}/data1/strings.txt
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/h2/default.cfg %{buildroot}/%{_gamesdatadir}/%{name}/data1/default.cfg
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/h2/hexen.rc %{buildroot}/%{_gamesdatadir}/%{name}/data1/hexen.rc
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/h2/strings.txt %{buildroot}/%{_gamesdatadir}/%{name}/data1/strings.txt
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/h2/default.cfg %{buildroot}/%{_gamesdatadir}/%{name}/data1/default.cfg
 %{__mkdir_p} %{buildroot}/%{_gamesdatadir}/%{name}/portals/
 %{__install} -D -m644 gamecode-%{gamecode_ver}/hc/portals/progs.dat %{buildroot}/%{_gamesdatadir}/%{name}/portals/progs.dat
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/portals/hexen.rc %{buildroot}/%{_gamesdatadir}/%{name}/portals/hexen.rc
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/portals/strings.txt %{buildroot}/%{_gamesdatadir}/%{name}/portals/strings.txt
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/portals/infolist.txt %{buildroot}/%{_gamesdatadir}/%{name}/portals/infolist.txt
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/portals/maplist.txt %{buildroot}/%{_gamesdatadir}/%{name}/portals/maplist.txt
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/portals/puzzles.txt %{buildroot}/%{_gamesdatadir}/%{name}/portals/puzzles.txt
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/portals/default.cfg %{buildroot}/%{_gamesdatadir}/%{name}/portals/default.cfg
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/portals/hexen.rc %{buildroot}/%{_gamesdatadir}/%{name}/portals/hexen.rc
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/portals/strings.txt %{buildroot}/%{_gamesdatadir}/%{name}/portals/strings.txt
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/portals/infolist.txt %{buildroot}/%{_gamesdatadir}/%{name}/portals/infolist.txt
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/portals/maplist.txt %{buildroot}/%{_gamesdatadir}/%{name}/portals/maplist.txt
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/portals/puzzles.txt %{buildroot}/%{_gamesdatadir}/%{name}/portals/puzzles.txt
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/portals/default.cfg %{buildroot}/%{_gamesdatadir}/%{name}/portals/default.cfg
 %{__mkdir_p} %{buildroot}/%{_gamesdatadir}/%{name}/hw/
 %{__install} -D -m644 gamecode-%{gamecode_ver}/hc/hw/hwprogs.dat %{buildroot}/%{_gamesdatadir}/%{name}/hw/hwprogs.dat
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/hw/strings.txt %{buildroot}/%{_gamesdatadir}/%{name}/hw/strings.txt
-%{__install} -D -m644 gamecode-%{gamecode_ver}/txt/hw/default.cfg %{buildroot}/%{_gamesdatadir}/%{name}/hw/default.cfg
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/hw/strings.txt %{buildroot}/%{_gamesdatadir}/%{name}/hw/strings.txt
+%{__install} -D -m644 gamecode-%{gamecode_ver}/res/hw/default.cfg %{buildroot}/%{_gamesdatadir}/%{name}/hw/default.cfg
 %{__install} -D -m644 hw/pak4.pak %{buildroot}/%{_gamesdatadir}/%{name}/hw/pak4.pak
 
 # Install ent fixes handling map quirks
@@ -228,7 +229,7 @@ utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 
 # Install the menu icon
 %{__mkdir_p} %{buildroot}/%{_datadir}/pixmaps
-%{__install} -D -m644 engine/resource/h2_32x32x4.png %{buildroot}/%{_datadir}/pixmaps/%{name}.png
+%{__install} -D -m644 engine/resource/hexen2.png %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 
 # Install menu entry
 %{__cat} > %{name}.desktop << EOF
@@ -254,11 +255,7 @@ desktop-file-install \
 	%{buildroot}%{_sysconfdir}/X11/applnk/Games/%{name}.desktop
 %endif
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %{_gamesdatadir}/%{name}/h2ded
 %{_gamesdatadir}/%{name}/hexen2
 %{_gamesdatadir}/%{name}/glhexen2
@@ -322,7 +319,6 @@ desktop-file-install \
 %{?_without_freedesktop:%{_sysconfdir}/X11/applnk/Games/%{name}.desktop}
 
 %files -n hexenworld
-%defattr(-,root,root)
 %{_gamesdatadir}/%{name}/hwsv
 %{_gamesdatadir}/%{name}/hwmaster
 %{_gamesdatadir}/%{name}/hwcl
