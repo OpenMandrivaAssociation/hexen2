@@ -39,7 +39,7 @@
 
 %define desktop_vendor	uhexen2
 
-%define gamecode_ver	1.28
+%define gamecode_ver	1.29b
 
 # pre-release version: MAKE SURE to change this
 # to an %undefine for the final realease!!
@@ -53,7 +53,7 @@
 Name:		hexen2
 License:	GPLv2
 Group:		Games/Arcade
-Version:	1.5.6
+Version:	1.5.9
 Release:	1
 Summary:	Hexen II: Hammer of Thyrion
 URL:		http://uhexen2.sourceforge.net/
@@ -106,37 +106,37 @@ run a HexenWorld server or client, and a master server application.
 %setup -q -n hexen2source-%{version} -a1 -a2
 
 %build
-# Build the main game binaries
-%{__make} -C engine/hexen2 %{engine_buildopt} DEBUG=yes h2
-%{__make} -s -C engine/hexen2 clean
-%{__make} -C engine/hexen2 %{engine_buildopt} DEBUG=yes glh2
-%{__make} -s -C engine/hexen2 clean
-# Build the dedicated server
-%{__make} -C engine/hexen2/server
-# HexenWorld binaries
-%{__make} -C engine/hexenworld/server
-%{__make} -C engine/hexenworld/client %{engine_buildopt} hw
-%{__make} -s -C engine/hexenworld/client clean
-%{__make} -C engine/hexenworld/client %{engine_buildopt} glhw
+# main game
+%{make_build} -C engine/hexen2 h2
+%{make_build} -s -C engine/hexen2 localclean
+%{make_build} -C engine/hexen2 glh2
+%{make_build} -s -C engine/hexen2 localclean
+
+# dedicated server
+%{make_build} -C engine/hexen2/server
+
+# HexenWorld
+%{make_build} -C engine/hexenworld/server
+%{make_build} -s -C engine/hexenworld/client localclean
+%{make_build} -C engine/hexenworld/client hw
+%{make_build} -s -C engine/hexenworld/client localclean
+%{make_build} -C engine/hexenworld/client glhw
+
 # HexenWorld master server
-%{__make} -C hw_utils/hwmaster
+%{make_build} -C hw_utils/hwmaster
 
-# Build h2patch
-%{__make} -C h2patch
+# h2patch
+%{make_build} -C h2patch
 
-# Launcher binaries
-%{__make} -C launcher %{gtk1_buildopt}
+# hcode compiler
+%{make_build} -C utils/hcc
 
-# Build the hcode compiler
-%{__make} -C utils/hcc
-# Build the game-code
-utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/h2
-utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/h2 -name progs2.src
-utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/portals -oi -on
-utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/hw -oi -on
-utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
-
-# Done building
+# game-code
+utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/h2 -os
+utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/h2 -os -name progs2.src
+utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/portals -os -oi -on
+utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/hw -os -oi -on
+#utils/hcc/hcc -src ../gamecode-$_gamecodever/hc/siege -os -oi -on
 
 %install
 %{__rm} -rf %{buildroot}
@@ -149,8 +149,6 @@ utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 %{__install} -D -m755 engine/hexenworld/server/hwsv %{buildroot}/%{_gamesdatadir}/%{name}/hwsv
 %{__install} -D -m755 hw_utils/hwmaster/hwmaster %{buildroot}/%{_gamesdatadir}/%{name}/hwmaster
 %{__install} -D -m755 h2patch/h2patch %{buildroot}/%{_gamesdatadir}/%{name}/h2patch
-%{__install} -D -m755 launcher/h2launcher %{buildroot}/%{_gamesdatadir}/%{name}/h2launcher
-# Make a symlink of the game-launcher
 %{__mkdir_p} %{buildroot}/%{_gamesbindir}
 %{__ln_s} %{_gamesdatadir}/hexen2/h2launcher %{buildroot}/%{_gamesbindir}/hexen2
 
@@ -165,7 +163,6 @@ utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 %{__install} -D -m644 docs/CHANGES %{buildroot}/%{_gamesdatadir}/%{name}/docs/CHANGES.old
 %{__install} -D -m644 docs/README.music %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.music
 %{__install} -D -m644 docs/README.3dfx %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.3dfx
-%{__install} -D -m644 docs/README.launcher %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.launcher
 %{__install} -D -m644 docs/README.hwcl %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.hwcl
 %{__install} -D -m644 docs/README.hwsv %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.hwsv
 %{__install} -D -m644 docs/README.hwmaster %{buildroot}/%{_gamesdatadir}/%{name}/docs/README.hwmaster
@@ -173,13 +170,6 @@ utils/hcc/hcc -src gamecode-%{gamecode_ver}/hc/siege -oi -on
 %{__install} -D -m644 docs/ReleaseNotes %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes
 # install release notes for the older versions
 %{__install} -D -m644 docs/ReleaseNotes.old %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes.old
-# %{__install} -D -m644 docs/ReleaseNotes-1.2.4a %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.2.4a
-# %{__install} -D -m644 docs/ReleaseNotes-1.3.0 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.3.0
-# %{__install} -D -m644 docs/ReleaseNotes-1.4.0 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.0
-# %{__install} -D -m644 docs/ReleaseNotes-1.4.1 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.1
-# %{__install} -D -m644 docs/ReleaseNotes-1.4.2 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.2
-# %{__install} -D -m644 docs/ReleaseNotes-1.4.3 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.3
-# %{__install} -D -m644 docs/ReleaseNotes-1.4.4 %{buildroot}/%{_gamesdatadir}/%{name}/docs/ReleaseNotes-1.4.4
 
 # Install the gamedata
 %{__mkdir_p} %{buildroot}/%{_gamesdatadir}/%{name}/data1/
@@ -294,7 +284,6 @@ desktop-file-install \
 %{_gamesdatadir}/%{name}/portals/maps/tibet9.txt
 %{_gamesbindir}/hexen2
 %{_datadir}/pixmaps/%{name}.png
-%{_gamesdatadir}/%{name}/h2launcher
 %{_gamesdatadir}/%{name}/docs/README
 %{_gamesdatadir}/%{name}/docs/COPYING
 %{_gamesdatadir}/%{name}/docs/BUGS
@@ -303,7 +292,6 @@ desktop-file-install \
 %{_gamesdatadir}/%{name}/docs/CHANGES
 %{_gamesdatadir}/%{name}/docs/CHANGES.old
 %{_gamesdatadir}/%{name}/docs/README.music
-%{_gamesdatadir}/%{name}/docs/README.launcher
 %{_gamesdatadir}/%{name}/docs/README.3dfx
 %{_gamesdatadir}/%{name}/docs/TODO
 %{_gamesdatadir}/%{name}/docs/SrcNotes.txt
