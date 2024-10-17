@@ -56,7 +56,7 @@ Group:		Games/Arcade
 Version:	1.5.9
 Release:	2
 Summary:	Hexen II: Hammer of Thyrion
-URL:		http://uhexen2.sourceforge.net/
+URL:		https://uhexen2.sourceforge.net/
 Source:		http://download.sourceforge.net/uhexen2/hexen2source-%{version}.tgz
 Source1:	http://download.sourceforge.net/uhexen2/hexen2source-gamecode-%{version}.tgz
 Source2:	http://download.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz
