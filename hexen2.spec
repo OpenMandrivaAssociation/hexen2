@@ -60,6 +60,7 @@ URL:		https://uhexen2.sourceforge.net/
 Source:		http://download.sourceforge.net/uhexen2/hexen2source-%{version}.tgz
 Source1:	http://download.sourceforge.net/uhexen2/hexen2source-gamecode-%{version}.tgz
 Source2:	http://download.sourceforge.net/uhexen2/hexenworld-pakfiles-0.15.tgz
+BuildRequires:	make
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(gl)
